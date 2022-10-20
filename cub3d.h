@@ -3,14 +3,25 @@
 
 # include <stdio.h>
 # include <stdlib.h>
-# include <mlx.h>
+// # include <mlx.h>
 # include <fcntl.h>
 # include <unistd.h>
 
+typedef struct n_north
+{
+    char *NO;
+    char *SO;
+    char *WE;
+    char *EA;
+}t_north;
+
+
 typedef struct n_data
 {
-    char **map;
-    char *path_img;
+    char    **map;
+    char    *path_map;
+    int     fd;
+    t_north north;
 }t_data;
 
 //============ get_next_line =============== 
@@ -28,5 +39,8 @@ int     read_map(t_data *data);
 
 //============ utils/utils_functions ===============
 int     calc_line(char **map);
+
+//============ ft_error/ft_error.c ===============
+int     ft_error(char *str);
 
 # endif

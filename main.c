@@ -4,12 +4,10 @@ int main(int ac, char **av)
 {
     t_data data;
 
-    if (av[1])
-        data.path_img = av[1];
-    if (ac != 2 && read_map(&data))
-    {
-        printf("please insert 2 argiment \n");
+    if (ac == 2)
+        data.path_map = av[1];
+    if (ac != 2 || read_map(&data))
         return (1);
-    }
+    printf("end programe\n");
     return (0);
 }
