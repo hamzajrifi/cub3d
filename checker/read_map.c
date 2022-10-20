@@ -53,6 +53,22 @@ int skip_speace(char *str, char *dst)
     return (0);
 }
 
+int check_color(t_data *data, char *str)
+{
+    int     i;
+    int     j;
+    int     len;
+
+    i = 0;
+    j = 0;
+    while (str && (str[i] == ' ' || str[i] == '\r' || str[i] == '\t'))
+        i++;
+    if (!str || !str[i])
+        return (1);
+    
+    return (0);
+}
+
 char    *skip_new_line_and_speaces(t_data *data)
 {
     int     i;
@@ -74,6 +90,7 @@ char    *skip_new_line_and_speaces(t_data *data)
     }
     return (&str[i]);
 }
+
 
 int check_north(t_data *data)
 {
@@ -110,10 +127,16 @@ int check_north(t_data *data)
         i++;
     if (!str || (str[i] != ' ' && str[i] != '\t' && str[i] != '\r')|| skip_speace(&str[i], data->north.EA) || i != 2)
         return (ft_error("EA is Wrong"));
-// ========  Floor color
-
-
+// ========  Floor color 
+    str = skip_new_line_and_speaces(data);
+    i = 0;
+    if (!str || str[i] != 'F' || check_color(data, &str[i + 1]))
+        return (ft_error("color floor is wrong"));
 // ========  Ceilling color
+    str = skip_new_line_and_speaces(data);
+    i = 0;
+    if (!str || str[i] != 'C' || check_color(data, &str[i + 1]))
+        return (ft_error("color ceilling is wrong"));
     
     return (0);
 }
