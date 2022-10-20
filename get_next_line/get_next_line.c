@@ -54,6 +54,7 @@ char	*my_newline(char **rest_line)
 	{
 		line = ft_substr(*rest_line, 0, ++i);
 		tmp = ft_strdup(*rest_line + i);
+		printf("tmp = %s", tmp);
 		free_mytab(rest_line);
 		*rest_line = tmp;
 		return (line);
