@@ -1,31 +1,48 @@
+INC=%%%%
+
+INCLIB=$(INC)/../lib
+
 CC = gcc 
 
-NAME = cub
+NAME = cub3D
 
 C_FLAG = -Wall -Wextra -Werror 
 
-FLAG_MLX =  -lmlx -framework OpenGL -framework AppKit
+FLAG_MLX_MAC =  -lmlx -framework OpenGL -Ofast -framework AppKit
 
-C_FILES =	./get_next_line/get_next_line_utils.c \
-			./get_next_line/get_next_line.c \
-			./utils/utils_functions.c \
-			./utils/ft_split.c \
-			./utils/ft_libft_substr.c \
-			./utils/ft_strtrim.c \
-			./ft_error/ft_error.c \
-			./checker/read_map.c \
-			./checker/check_color.c
+C_FILES =	utils/get.c \
+			utils/ft_split.c \
+			utils/ft_atoi.c \
+			utils/ft_strtrim.c \
+			utils/ft_substr.c  \
+			utils/libft_utils.c  \
+			utils/ft_strjoin.c  \
+			parse/check_map.c \
+			parse/check_characters.c \
+			parse/check_range.c \
+			parse/check_file.c \
+			parse/parse_backslash.c \
+			parse/parse_line.c \
+			parse/utils_check_file.c \
+			hooks/hooks.c \
+			initial_param/initial_param.c\
+			raycasting/rander_map.c \
+			raycasting/drawing.c \
+			raycasting/print_in_win.c\
+			raycasting/distance.c \
+			raycasting/texture.c \
+			raycasting/minimap.c
 
-HDR  =	cub3d.h
+HDR  =	cub.h
 
 all : $(NAME)
-$(NAME) : $(HDR)
-		$(CC) -o $(NAME) main.c $(C_FILES)
+$(NAME) : $(HDR) $(C_FILES) cub.c
+	$(CC) -o $(NAME)  cub.c $(C_FILES) $(C_FLAG) $(FLAG_MLX_MAC)
+		
 
 clean : 
-	rm -f *.o ./checker/*.o ./get_next_line/*.o ./utils/*.o
+	rm -f cub3D
 
-fclean :
-	rm -f cub
+fclean : clean
 
 re : fclean all

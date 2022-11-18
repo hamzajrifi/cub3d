@@ -3,76 +3,69 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hjrifi <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: hjrifi <hjrifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/12 12:41:13 by hjrifi            #+#    #+#             */
-/*   Updated: 2021/11/20 16:02:33 by hjrifi           ###   ########.fr       */
+/*   Created: 2022/11/17 15:49:21 by hjrifi            #+#    #+#             */
+/*   Updated: 2022/11/18 17:33:13 by hjrifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub.h"
 
-static int	ft_ntab(char const *s, char c)
+static int	size(const char	*s, char c)
 {
-	int	ntab;
 	int	i;
+	int	j;
 
 	i = 0;
-	ntab = 0;
-	while (s[i])
+	j = 0;
+	while (s[i] != '\0')
 	{
 		if (s[i] != c)
 		{
 			while (s[i] != c && s[i] != '\0')
 				i++;
-			ntab++;
+			j++;
 			i--;
 		}
 		i++;
 	}
-	return (ntab);
+	return (j);
 }
 
-static char	**ft_copy(char **tab, char const *s, int ntab, int c)
+static void	check_p(char *st, int num, char sep, char **tab)
 {
+	int	start;
 	int	b;
-	int	a;
 	int	i;
 
 	i = 0;
-	a = 0;
-	while (a < ntab)
+	start = 0;
+	b = 0;
+	while (i < num)
 	{
-		while (s[i] && s[i] == c)
-			i++;
-		b = i;
-		while (s[i] != c && s[i])
-			i++;
-		tab[a] = ft_libft_substr(s, b, (i - b));
-		if (!*tab)
-		{
-			while (a > 0)
-				free(tab[a--]);
-			free (tab);
-			return (NULL);
-		}
-		a++;
+		while (st[b] == sep)
+			b++;
+		start = b;
+		while (st[b] != sep && st[b])
+			b++;
+		tab[i] = ft_substr(st, start, (b - start));
+		i++;
 	}
-	tab[a] = (NULL);
-	return (tab);
+	tab[i] = NULL;
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char l)
 {
-	int		ntab;
 	char	**tab;
+	int		num_str;
 
 	if (!s)
 		return (NULL);
-	ntab = ft_ntab(s, c);
-	tab = (char **)malloc(sizeof(char *) * (ntab + 1));
+	num_str = size(s, l);
+	tab = (char **)malloc(sizeof(char *) * (num_str + 2));
 	if (!tab)
 		return (NULL);
-	ft_copy (tab, s, ntab, c);
+	check_p(s, num_str, l, tab);
 	return (tab);
 }

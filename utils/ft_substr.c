@@ -5,46 +5,45 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: hjrifi <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/09 17:56:57 by hjrifi            #+#    #+#             */
-/*   Updated: 2021/11/16 19:29:26 by hjrifi           ###   ########.fr       */
+/*   Created: 2022/11/17 15:49:56 by hjrifi            #+#    #+#             */
+/*   Updated: 2022/11/17 15:49:57 by hjrifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "../cub.h"
 
-static void	ft_copy(char *ptr, char const *s, unsigned int start, size_t len)
+static void	check(const char *s, char *su, int sta, int len)
 {
-	int		j;
-	size_t	k;
+	int	i;
+	int	j;
 
+	i = 0;
 	j = 0;
-	k = 0;
-	while (s[j])
+	while (s[i])
 	{
-		if (s[j] == s[start] && k < len)
+		if (i >= sta && j < len)
 		{
-			ptr[k] = s[start];
-			k++;
-			start++;
+			su[j] = s[i];
+			j++;
 		}
-		j++;
+		i++;
 	}
-	ptr[k] = '\0';
+	su[j] = '\0';
 }
 
-char	*ft_libft_substr(char const *s, unsigned int start, size_t len)
+char	*ft_substr(char *s, unsigned int start, size_t len)
 {
-	char	*ptr;
 	size_t	a;
+	char	*sub;
 
 	a = len + 1;
-	if (!s)
+	if (s == NULL)
 		return (NULL);
-	if (a >= ft_strlen(s))
-		a = ft_strlen(s);
-	ptr = (char *)malloc(a);
-	if (!ptr)
+	if (a > ft_strlen(s))
+		a = ft_strlen((s) + 1);
+	sub = (char *)malloc(sizeof(char) * a + 1);
+	if (!sub)
 		return (NULL);
-	ft_copy(ptr, s, start, len);
-	return (ptr);
+	check(s, sub, start, len);
+	return (sub);
 }
