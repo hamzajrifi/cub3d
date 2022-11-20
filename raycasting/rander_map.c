@@ -6,7 +6,7 @@
 /*   By: hjrifi <hjrifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 01:20:03 by hjrifi            #+#    #+#             */
-/*   Updated: 2022/11/19 00:22:47 by hjrifi           ###   ########.fr       */
+/*   Updated: 2022/11/20 20:25:32 by hjrifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,9 @@ void	update_player(t_allData *all)
 	float	move_step;
 	float	new_px;
 	float	new_py;
-	float	p = 0;
+	float	p;
 
+	p = 0;
 	all->player.rotation_angle += all->player.turn_d * all->player.turnspeed;
 	all->ray_angle = all->player.rotation_angle - (PI / 6);
 	move_step = all->player.walk_d * all->player.walkspeed;
@@ -58,9 +59,8 @@ void	update_player(t_allData *all)
 		move_step = all->player.walk_lr * all->player.walkspeed;
 		p = PI / 2;
 	}
-	new_px = all->player.x + cos(all->player.rotation_angle + p) * move_step ;
-	new_py = all->player.y + sin(all->player.rotation_angle + p) * move_step ;
-	
+	new_px = all->player.x + cos(all->player.rotation_angle + p) * move_step;
+	new_py = all->player.y + sin(all->player.rotation_angle + p) * move_step;
 	if (!check_if_has_wall(all, new_px, new_py))
 	{
 		all->player.x = new_px;

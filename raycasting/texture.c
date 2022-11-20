@@ -6,7 +6,7 @@
 /*   By: hjrifi <hjrifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 03:01:03 by hjrifi            #+#    #+#             */
-/*   Updated: 2022/11/18 16:12:48 by hjrifi           ###   ########.fr       */
+/*   Updated: 2022/11/20 20:19:34 by hjrifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	put_wall(t_allData *all, int x)
 		wall.dg += 2 * M_PI;
 	else if (wall.dg > 2 * M_PI)
 		wall.dg -= 2 * M_PI;
-	wall.wall_he = WIN_WIDTH / (all->rays.distance * cos(wall.dg)) * 64;
+	wall.wall_he = WIN_HEIGHT / (all->rays.distance * cos(wall.dg)) * 74;
 	wall.top_y = WIN_HEIGHT / 2 - wall.wall_he / 2;
 	wall.btm_y = wall.top_y + wall.wall_he;
 	print_txtr_img(all, wall, x);
