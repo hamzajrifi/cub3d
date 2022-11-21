@@ -6,7 +6,7 @@
 /*   By: hjrifi <hjrifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 00:06:23 by hjrifi            #+#    #+#             */
-/*   Updated: 2022/11/19 00:23:03 by hjrifi           ###   ########.fr       */
+/*   Updated: 2022/11/20 23:09:20 by hjrifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -212,10 +212,12 @@ void	put_wall(t_allData *all, int x);
 
 /// distance.c
 void	check_distance_to_wall(t_allData *all);
+float	calcul_distance(t_player *player, float x1, float y1);
 int		calcul_steps(int dx, int dy);
 int		check_if_has_wall(t_allData *all, float x, float y);
 
 //// minimap.c
 void	mini_map(t_allData *all);
-
+/// map 2d 
+void    mini_map_2d(t_allData *all);
 #endif

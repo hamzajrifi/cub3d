@@ -6,13 +6,13 @@
 /*   By: hjrifi <hjrifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 01:08:20 by hjrifi            #+#    #+#             */
-/*   Updated: 2022/11/17 02:55:29 by hjrifi           ###   ########.fr       */
+/*   Updated: 2022/11/21 02:26:05 by hjrifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub.h"
 
-void	print_line_fov(t_allData *all, t_rays ray)
+void	print_line_fov_2d(t_allData *all, t_rays ray)
 {
 	int	i;
 
@@ -28,10 +28,10 @@ void	print_line_fov(t_allData *all, t_rays ray)
 	while (i <= ray.steps)
 	{
 		if (all->rays.found_h)
-			my_mlx_pixel_put(&all->m_map, round(ray.x_p),
+			my_mlx_pixel_put(&all->data, round(ray.x_p),
 				round(ray.y_p), 0x0000FF);
 		else
-			my_mlx_pixel_put(&all->m_map, round(ray.x_p),
+			my_mlx_pixel_put(&all->data, round(ray.x_p),
 				round(ray.y_p), 0xbb00FF);
 		ray.x_p += ray.xinc;
 		ray.y_p += ray.yinc;
@@ -47,6 +47,7 @@ void	print_dda_lines(t_allData *all)
 	while (j < WIN_WIDTH)
 	{
 		check_rays(all);
+		// print_line_fov_2d(all, all->rays);
 		put_wall(all, j);
 		all->ray_angle += (PI / 3) / WIN_WIDTH;
 		j++;

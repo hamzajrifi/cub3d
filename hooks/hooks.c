@@ -6,7 +6,7 @@
 /*   By: hjrifi <hjrifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:28:34 by hjrifi            #+#    #+#             */
-/*   Updated: 2022/11/19 00:24:43 by hjrifi           ###   ########.fr       */
+/*   Updated: 2022/11/20 21:37:13 by hjrifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 int	move_player(int keycode, t_allData *all)
 {
+	//printf("key = %d \n", keycode);
 	if (keycode == 124 || keycode == 65363)
 		all->player.turn_d = 1;
 	if (keycode == 123 || keycode == 65361)
 		all->player.turn_d = -1;
 	if (keycode == 65362 || keycode == 13)
 		all->player.walk_d = 1;
+	if (keycode == 65364 || keycode == 1)
+		all->player.walk_d = -1;
 	if (keycode == 2)
 		all->player.walk_lr = 1;
 	if (keycode == 0)
 		all->player.walk_lr = -1;
-	if (keycode == 65364 || keycode == 1)
-		all->player.walk_d = -1;
 	if (all->player.walk_d || all->player.turn_d || all->player.walk_lr)
 	{
 		update_player(all);

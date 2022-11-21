@@ -31,7 +31,8 @@ C_FILES =	utils/get.c \
 			raycasting/print_in_win.c\
 			raycasting/distance.c \
 			raycasting/texture.c \
-			raycasting/minimap.c
+			raycasting/minimap.c\
+			raycasting/map_2d.c
 
 HDR  =	cub.h
 
