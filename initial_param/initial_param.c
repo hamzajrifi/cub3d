@@ -6,7 +6,7 @@
 /*   By: hjrifi <hjrifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 00:37:20 by hjrifi            #+#    #+#             */
-/*   Updated: 2022/11/21 01:59:53 by hjrifi           ###   ########.fr       */
+/*   Updated: 2022/11/21 02:41:46 by hjrifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	initial_player(t_allData *all, t_path *path)
 	all->player.rotation_angle = check_player_direction(path->pdirec);
 	all->ray_angle = all->player.rotation_angle - (PI / 6);
 	all->player.walkspeed = 3;
-	all->player.turnspeed = 3 * (PI / 180);
+	all->player.turnspeed = 2 * (PI / 180);
 }
 
 void	initial_param(t_path *path, t_allData *all)

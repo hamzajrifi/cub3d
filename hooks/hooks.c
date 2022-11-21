@@ -6,7 +6,7 @@
 /*   By: hjrifi <hjrifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 16:28:34 by hjrifi            #+#    #+#             */
-/*   Updated: 2022/11/20 21:37:13 by hjrifi           ###   ########.fr       */
+/*   Updated: 2022/11/21 02:47:50 by hjrifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	move_player(int keycode, t_allData *all)
 {
-	//printf("key = %d \n", keycode);
 	if (keycode == 124 || keycode == 65363)
 		all->player.turn_d = 1;
 	if (keycode == 123 || keycode == 65361)

@@ -6,7 +6,7 @@
 /*   By: hjrifi <hjrifi@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 00:06:23 by hjrifi            #+#    #+#             */
-/*   Updated: 2022/11/20 23:09:20 by hjrifi           ###   ########.fr       */
+/*   Updated: 2022/11/21 02:57:36 by hjrifi           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,6 @@ void	initial_win(t_allData *all);
 void	initial_win_data(t_allData *all);
 
 ////// check_file.c
-////// check_file.c
 void	get_no(char *str, t_path *path);
 void	get_so(char *str, t_path *path);
 void	get_we(char *str, t_path *path);
@@ -184,7 +183,6 @@ int		len(char *str, int c);
 void	add_valid_path(t_path *path, int i, char *str);
 char	*get_str(char *string, int size);
 bool	check_name_of_file(char *str);
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int		check_position(t_path *path, int i, int j);
 void	check_walls(t_path *path);
 void	check_duplicate(t_path *path);
@@ -209,6 +207,8 @@ void	check_rays(t_allData *all);
 /// print_in_win.c
 void	print_dda_lines(t_allData *all_data);
 void	put_wall(t_allData *all, int x);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+void	put_floor_and_ceilling(t_allData *all);
 
 /// distance.c
 void	check_distance_to_wall(t_allData *all);
@@ -219,5 +219,5 @@ int		check_if_has_wall(t_allData *all, float x, float y);
 //// minimap.c
 void	mini_map(t_allData *all);
 /// map 2d 
-void    mini_map_2d(t_allData *all);
+void	mini_map_2d(t_allData *all);
 #endif
